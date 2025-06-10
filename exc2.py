@@ -13,11 +13,12 @@ pontos_criticos.sort()
 intervalos = [(-float('inf'), pontos_criticos[0]), 
               (pontos_criticos[0], pontos_criticos[1]), 
               (pontos_criticos[1], float('inf'))]
+pontos_teste = [-5, (pontos_criticos[0] + pontos_criticos[1]) / 2, 5]
 
 print("Análise dos intervalos:")
-for intervalo in intervalos:
-    ponto_teste = (intervalo[0] + intervalo[1]) / 2
-    sinal = primeira_derivada.subs(variavel_x, ponto_teste)
+for i, intervalo in enumerate(intervalos):
+    ponto_teste = pontos_teste[i]
+    sinal = float(primeira_derivada.subs(variavel_x, ponto_teste))
     print(f"Intervalo {intervalo}: f'({ponto_teste}) = {sinal}")
     if sinal > 0:
         print(f"f é crescente em {intervalo}")
