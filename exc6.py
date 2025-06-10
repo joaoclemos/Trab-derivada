@@ -14,10 +14,11 @@ valores_criticos = [(float(p), float(funcao.subs(variavel_x, p))) for p in ponto
 print("b) Pontos críticos:", valores_criticos)
 
 intervalos = [(-float('inf'), -3), (-3, float('inf'))]
+pontos_teste = [-5, 5]
 print("c) Análise de crescimento/decrescimento:")
-for intervalo in intervalos:
-    ponto_teste = (intervalo[0] + intervalo[1]) / 2
-    sinal = primeira_derivada.subs(variavel_x, ponto_teste)
+for i, intervalo in enumerate(intervalos):
+    ponto_teste = pontos_teste[i]
+    sinal = float(primeira_derivada.subs(variavel_x, ponto_teste))
     print(f"Intervalo {intervalo}: f'({ponto_teste}) = {sinal}")
     if sinal > 0:
         print(f"f é crescente em {intervalo}")
@@ -29,9 +30,9 @@ print("d) Máximos e mínimos locais:", "Nenhum, pois f'(x) nunca é zero" if no
 segunda_derivada = diff(funcao, variavel_x, 2)
 pontos_inflexao = solve(segunda_derivada, variavel_x)
 print("e) Análise da concavidade:")
-for intervalo in intervalos:
-    ponto_teste = (intervalo[0] + intervalo[1]) / 2
-    sinal = segunda_derivada.subs(variavel_x, ponto_teste)
+for i, intervalo in enumerate(intervalos):
+    ponto_teste = pontos_teste[i]
+    sinal = float(segunda_derivada.subs(variavel_x, ponto_teste))
     print(f"Intervalo {intervalo}: f''({ponto_teste}) = {sinal}")
     if sinal > 0:
         print(f"f é côncava para cima em {intervalo}")

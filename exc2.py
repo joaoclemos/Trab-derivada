@@ -1,4 +1,4 @@
-from sympy import symbols, diff, solve, S
+from sympy import symbols, diff, solve
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -19,11 +19,11 @@ print("Análise dos intervalos:")
 for i, intervalo in enumerate(intervalos):
     ponto_teste = pontos_teste[i]
     sinal = float(primeira_derivada.subs(variavel_x, ponto_teste))
-    print(f"Intervalo {intervalo}: f'({ponto_teste}) = {sinal}")
+    print(f"Debug: ponto_teste = {ponto_teste}, sinal = {sinal}, tipo = {type(sinal)}")
     if sinal > 0:
-        print(f"f é crescente em {intervalo}")
+        print(f"Intervalo {intervalo}: f'({ponto_teste}) = {sinal}, f é crescente")
     elif sinal < 0:
-        print(f"f é decrescente em {intervalo}")
+        print(f"Intervalo {intervalo}: f'({ponto_teste}) = {sinal}, f é decrescente")
 
 valores_x = np.linspace(-5, 5, 400)
 funcao_primeira_derivada = lambda t: 6*t**2 + 2*t - 20
